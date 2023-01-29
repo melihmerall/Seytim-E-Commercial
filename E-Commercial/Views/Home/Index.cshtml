@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ::::::  Banner Section  ::::::  -->
+@await Html.PartialAsync("~/Views/Home/BannerPartial.cshtml")
+
+<!-- :::::: New Products Here   ::::::  -->
+@await Html.PartialAsync("~/Views/Home/NewProductsPartial.cshtml")
+
+<!-- ::::::  Company Description Section  ::::::  -->
+@await Html.PartialAsync("~/Views/Home/CompanyDescriptionPartial.cshtml")
+
+<!-- ::::::  News on Newspaper or blogs   ::::::  -->
+@await Html.PartialAsync("~/Views/Home/NewsAndBlogsPartial.cshtml")

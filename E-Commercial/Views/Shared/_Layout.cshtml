@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/vendor/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/css/vendor/fontawesome.css" rel="stylesheet" />
+    <link href="~/css/vendor/plaza-icon.css" rel="stylesheet" />
+    <link href="~/css/vendor/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/plugin/slick.css" rel="stylesheet" />
+    <link href="~/css/plugin/material-scrolltop.css" rel="stylesheet" />
+    <link href="~/css/plugin/price_range_style.css" rel="stylesheet" />
+    <link href="~/css/plugin/in-number.css" rel="stylesheet" />
+    <link href="~/css/plugin/venobox.min.css" rel="stylesheet" />
+    <link href="~/css/plugin/jquery.lineprogressbar.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seytim E-Ticaret</title>
+    <link rel="icon" href="https://seykoop.com.tr/wp-content/uploads/2022/06/favicon-100x100.png" sizes="32x32">
+</head>
+<body>
+    @await Html.PartialAsync("~/Views/Shared/Partials/_MenuPartials.cshtml")
+
+
+    @RenderBody()
+
+
+    <button class="material-scrolltop" type="button"></button>
+    @await Html.PartialAsync("~/Views/Shared/Partials/_FooterPartials.cshtml")
+    <script src="~/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="~/js/vendor/jquery-ui.min.js"></script>
+    <script src="~/js/vendor/bootstrap.bundle.min.js"></script>
+    <!-- Plugins JS Files -->
+    <script src="~/js/plugin/slick.min.js"></script>
+    <script src="~/js/plugin/jquery.countdown.min.js"></script>
+    <script src="~/js/plugin/material-scrolltop.js"></script>
+    <script src="~/js/plugin/price_range_script.js"></script>
+    <script src="~/js/plugin/in-number.js"></script>
+    <script src="~/js/plugin/jquery.elevateZoom-3.0.8.min.js"></script>
+    <script src="~/js/plugin/venobox.min.js"></script>
+    <script src="~/js/plugin/jquery.waypoints.js"></script>
+    <script src="~/js/plugin/jquery.lineProgressbar.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="~/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
