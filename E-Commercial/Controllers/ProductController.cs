@@ -8,5 +8,9 @@ namespace E_Commercial.Controllers
         {
             return View();
         }
+        public IActionResult Details()
+        {
+            return View();
+        }
     }
 }

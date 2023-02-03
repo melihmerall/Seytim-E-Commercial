@@ -1,0 +1,440 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="page-breadcrumb__menu">
+                    <li class="page-breadcrumb__nav"><a href="#">Anasayfa</a></li>
+                    <li class="page-breadcrumb__nav active">Ürün Adı</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> <!-- ::::::  End  Breadcrumb Section  ::::::  -->
+<main id="main-container" class="main-container">
+
+    <!-- Start Product Details Gallery -->
+    <div class="product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="product-gallery-box product-gallery-box--tab d-flex align-items-center flex-row-reverse m-b-60">
+                        <div class="product-image--large product-image--large-vertical float-80-per m-l-20">
+                            <img class="img-fluid" id="img-zoom" src="/css/img/product/gallery/gallery-large/product-gallery-large-1.jpg" data-zoom-image="/css/img/product/gallery/gallery-large/product-gallery-large-1.jpg" alt="">
+                        </div>
+                        <div id="gallery-zoom" class="product-image--thumb product-image--thumb-vertical pos-relative float-20-per">
+                            <a class="zoom-active" data-image="/css/img/product/gallery/gallery-large/product-gallery-large-1.jpg" data-zoom-image="/css/img/product/gallery/gallery-large/product-gallery-large-1.jpg">
+                                <img class="img-fluid" src="/css/img/product/gallery/gallery-large/product-gallery-large-1.jpg" alt="">
+                            </a>
+                            <a data-image="/css/img/product/gallery/gallery-large/product-gallery-large-2.jpg" data-zoom-image="/css/img/product/gallery/gallery-large/product-gallery-large-2.jpg">
+                                <img class="img-fluid" src="/css/img/product/gallery/gallery-large/product-gallery-large-2.jpg" alt="">
+                            </a>
+                            <a data-image="/css/img/product/gallery/gallery-large/product-gallery-large-3.jpg" data-zoom-image="/css/img/product/gallery/gallery-large/product-gallery-large-3.jpg">
+                                <img class="img-fluid" src="/css/img/product/gallery/gallery-large/product-gallery-large-3.jpg" alt="">
+                            </a>
+                            <a data-image="/css/img/product/gallery/gallery-large/product-gallery-large-4.jpg" data-zoom-image="/css/img/product/gallery/gallery-large/product-gallery-large-4.jpg">
+                                <img class="img-fluid" src="/css/img/product/gallery/gallery-large/product-gallery-large-4.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="product-details-box position-sticky  m-b-60">
+                        <h4 class="font--regular m-b-20">Ürün Adı</h4>
+                       
+                        <div class="product__price m-t-5">
+                            <span class="product__price product__price--large">Fiyat</span>
+                            
+                        </div>
+                        <div class="product__desc m-t-25 m-b-30">
+                            <p>Ürün Açıklaması</p>
+                        </div>
+                        <div class="product-var p-tb-30">
+                            <div class="product__stock m-b-20">
+                                <span class="product__stock--in"><i class="fas fa-check-circle"></i> Stok Sayısı</span>
+                            </div>
+                           
+                            <div class="product-quantity product-var__item d-flex align-items-center">
+                                <span class="product-var__text">Miktar: </span>
+                                <form class="quantity-scale m-l-20">
+                                    <div class="value-button" id="decrease" onclick="decreaseValue()">-</div>
+                                    <input readonly type="number" id="number" value="1" />
+                                    <div class="value-button" id="increase" onclick="increaseValue()">+</div>
+                                </form>
+                            </div>
+                           
+                            <div class="product-var__item">
+                                <div class="dynmiac_checkout--button">
+                                    <input type="checkbox" id="buy-now-check" value="1" class="p-r-30">
+                                    <label for="buy-now-check" class="m-b-20">Şart ve Koşulları Onaylıyorum.</label>
+                                    <a href="cart.html" class="btn btn--block btn--long btn--radius-tiny btn--green btn--green-hover-black text-uppercase m-r-35">Şimdi Sipariş Ver</a>
+                                </div>
+                            </div>
+                            <div class="product-var__item">
+                                <span class="product-var__text">Güvenli Ödeme </span>
+                                <ul class="payment-icon m-t-5">
+                                    <li><img src="/css/img/icon/payment/visa.svg" alt=""></li>
+                                    <li><img src="/css/img/icon/payment/mastercard.svg" alt=""></li>
+
+                                </ul>
+                            </div>
+                           @* <div class="product-var__item d-flex align-items-center">
+                                <span class="product-var__text">Share: </span>
+                                <ul class="product-social m-l-20">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                </ul>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Product Details Gallery -->
+    <!-- Start Product Details Tab -->
+    <div class="product-details-tab-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-details-content">
+                        <ul class="tablist tablist--style-black tablist--style-title tablist--style-gap-30 nav">
+                            <li><a class="nav-link active" data-bs-toggle="tab" href="#product-desc">Ürün Açıklaması Hepsi</a></li>
+                            <li><a class="nav-link" data-bs-toggle="tab" href="#product-dis">Ürün Detayı</a></li>
+                        </ul>
+                        <div class="product-details-tab-box">
+                            <div class="tab-content">
+                                <!-- Start Tab - Product Description -->
+                                <div class="tab-pane show active" id="product-desc">
+                                    <div class="para__content">
+                                        Ürün Açıklaması
+                                    </div>
+                                </div>  <!-- End Tab - Product Description -->
+                                <!-- Start Tab - Product Details -->
+                                <div class="tab-pane" id="product-dis">
+                                    <div class="product-dis__content">
+                                        <a href="#" class="product-dis__img m-b-30"><img style="background-color: darkgreen;" src="~/css/img//logo/seykoop-logo-beyaz.png" alt=""></a>
+                                        <div class="table-responsive-md">
+                                            <table class="product-dis__list table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="product-dis__title">Ağırlık</td>
+                                                        <td class="product-dis__text">00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-dis__title">Materyal&Ham Madde</td>
+                                                        <td class="product-dis__text">x-y</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="product-dis__title">Boyutlar</td>
+                                                        <td class="product-dis__text">10 x 10 x 15 cm</td>
+                                                    </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>  <!-- End Tab - Product Details -->
+                              @*  <!-- Start Tab - Product Review -->
+                                <div class="tab-pane " id="product-review">
+                                    <!-- Start - Review Comment -->
+                                    <ul class="comment">
+                                        <!-- Start - Review Comment list-->
+                                        <li class="comment__list">
+                                            <div class="comment__wrapper">
+                                                <div class="comment__img">
+                                                    <img src="assets/img/user/image-1.png" alt="">
+                                                </div>
+                                                <div class="comment__content">
+                                                    <div class="comment__content-top">
+                                                        <div class="comment__content-left">
+                                                            <h6 class="comment__name">Kaedyn Fraser</h6>
+                                                            <ul class="product__review">
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--blank"><i class="icon-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="comment__content-right">
+                                                            <a href="#" class="link--gray link--icon-left m-b-5"><i class="fas fa-reply"></i>Reply</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="para__content">
+                                                        <p class="para__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Start - Review Comment Reply-->
+                                            <ul class="comment__reply">
+                                                <li class="comment__reply-list">
+                                                    <div class="comment__wrapper">
+                                                        <div class="comment__img">
+                                                            <img src="assets/img/user/image-2.png" alt="">
+                                                        </div>
+                                                        <div class="comment__content">
+                                                            <div class="comment__content-top">
+                                                                <div class="comment__content-left">
+                                                                    <h6 class="comment__name">Oaklee Odom</h6>
+                                                                </div>
+                                                                <div class="comment__content-right">
+                                                                    <a href="#" class="link--gray link--icon-left m-b-5"><i class="fas fa-reply"></i>Reply</a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="para__content">
+                                                                <p class="para__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul> <!-- End - Review Comment Reply-->
+                                        </li> <!-- End - Review Comment list-->
+                                        <!-- Start - Review Comment list-->
+                                        <li class="comment__list">
+                                            <div class="comment__wrapper">
+                                                <div class="comment__img">
+                                                    <img src="assets/img/user/image-3.png" alt="">
+                                                </div>
+                                                <div class="comment__content">
+                                                    <div class="comment__content-top">
+                                                        <div class="comment__content-left">
+                                                            <h6 class="comment__name">Jaydin Jones</h6>
+                                                            <ul class="product__review">
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                                <li class="product__review--blank"><i class="icon-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="comment__content-right">
+                                                            <a href="#" class="link--gray link--icon-left m-b-5"><i class="fas fa-reply"></i>Reply</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="para__content">
+                                                        <p class="para__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li> <!-- End - Review Comment list-->
+                                    </ul>  <!-- End - Review Comment -->
+                                    <!-- Start Add Review Form-->
+                                    <div class="review-form m-t-40">
+                                        <div class="section-content">
+                                            <h6 class="font--bold text-uppercase">ADD A REVIEW</h6>
+                                            <p class="section-content__desc">Your email address will not be published. Required fields are marked *</p>
+                                        </div>
+                                        <form class="form-box" action="#" method="post">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-box__single-group">
+                                                        <label for="form-name">Your Rating*</label>
+                                                        <ul class="product__review">
+                                                            <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                            <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                            <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                            <li class="product__review--fill"><i class="icon-star"></i></li>
+                                                            <li class="product__review--blank"><i class="icon-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-box__single-group">
+                                                        <label for="form-name">Your Name*</label>
+                                                        <input type="text" id="form-name" placeholder="Enter your name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-box__single-group">
+                                                        <label for="form-email">Your Email*</label>
+                                                        <input type="email" id="form-email" placeholder="Enter your email" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-box__single-group">
+                                                        <label for="form-review">Your review*</label>
+                                                        <textarea id="form-review" rows="8" placeholder="Write a review"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="btn btn--box btn--small btn--black btn--black-hover-green btn--uppercase font--bold m-t-30" type="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> <!-- End Add Review Form- -->
+                                </div>  <!-- Start Tab - Product Review -->*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  <!-- End Product Details Tab -->
+    <!-- ::::::  Start  Product Style - Default Section  ::::::  -->
+    <div class="product m-t-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Start Section Title -->
+                    <div class="section-content section-content--border m-b-35">
+                        <h5 class="section-content__title">
+                            İlgili Ürünler
+                        </h5>
+                        <a href="shop-sidebar-grid-left.html" class="btn btn--icon-left btn--small btn--radius btn--transparent btn--border-green btn--border-green-hover-green font--regular text-capitalize">Daha Fazla<i class="fal fa-angle-right"></i></a>
+                    </div>  <!-- End Section Title -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="default-slider default-slider--hover-bg-red product-default-slider">
+                        <div class="product-default-slider-4grid-1rows gap__col--30 gap__row--40">
+
+                            <!-- Start Single Default Product -->
+                            <div class="product__box product__default--single text-center">
+                                <!-- Start Product Image -->
+                                <div class="product__img-box  pos-relative">
+                                    <a href="product-single-default.html" class="product__img--link">
+                                        <img class="product__img img-fluid" src="/css/img/product/size-normal/product-home-1-img-1.jpg" alt="">
+                                    </a>
+                                    <!-- Start Procuct Label -->
+                                    
+                                    <!-- End Procuct Label -->
+                                    <!-- Start Product Action Link-->
+                                    <ul class="product__action--link pos-absolute">
+                                        <li><a href="#modalAddCart" data-bs-toggle="modal"><i class="icon-shopping-cart"></i></a></li>
+                                        <li><a href="#modalQuickView" data-bs-toggle="modal"><i class="icon-eye"></i></a></li>
+                                    </ul> <!-- End Product Action Link -->
+                                </div> <!-- End Product Image -->
+                                <!-- Start Product Content -->
+                                <div class="product__content m-t-20">
+                                   
+                                    <a href="product-single-default.html" class="product__link">Ürün Adı</a>
+                                    <div class="product__price m-t-5">
+                                        <span class="product__price">Fiyat</span>
+                                    </div>
+                                </div> <!-- End Product Content -->
+                            </div> <!-- End Single Default Product -->
+                            <!-- Start Single Default Product -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ::::::  End  Product Style - Default Section  ::::::  -->
+    <!-- ::::::  Start  Company Logo Section  ::::::  -->
+
+
+</main>  <!-- :::::: End MainContainer Wrapper :::::: -->
+<!-- Start Modal Add cart -->
+<div class="modal fade" id="modalAddCart" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col text-end">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"> <i class="fal fa-times"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="modal__product-img">
+                                        <img class="img-fluid" src="~/css/img/product/size-normal/product-home-1-img-1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="link--green link--icon-left"><i class="fal fa-check-square"></i>Ürün Sepete Eklendi!</div>
+                                    <div class="modal__product-cart-buttons m-tb-15">
+                                        <a href="" class="btn btn--box  btn--tiny btn--green btn--green-hover-black btn--uppercase">Sepete Git</a>
+                                        <a href="" class="btn btn--box  btn--tiny btn--green btn--green-hover-black btn--uppercaset">Alışverişe Devam Et</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 modal__border">
+                            <ul class="modal__product-shipping-info">
+                                <li class="link--icon-left"><i class="icon-shopping-cart"></i> Sepette x Miktarda Ürün var</li>
+                                <li>Sepet Toplam Fiyatı: <span>Fiyat</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Modal Add cart --> <!-- End Modal Add cart -->
+<!-- Start Modal Quickview cart -->
+<div class="modal fade" id="modalQuickView" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col text-end">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"> <i class="fal fa-times"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-gallery-box m-b-60">
+                                <div class="modal-product-image--large">
+                                    <img class="img-fluid" src="assets/img/product/gallery/gallery-large/product-gallery-large-1.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-details-box">
+                                <h5 class="title title--normal m-b-20">Ürün Adı</h5>
+                                <div class="product__price">
+                                    <span class="product__price-del">Fiyat</span>
+                                    <span class="product__price-reg">Fiyat</span>
+                                </div>
+                                @*<ul class="product__review m-t-15">
+                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                <li class="product__review--fill"><i class="icon-star"></i></li>
+                                <li class="product__review--blank"><i class="icon-star"></i></li>
+                                </ul>*@
+                                <div class="product__desc m-t-25 m-b-30">
+                                    <p>
+                                        Ürün Açıklaması
+                                    </p>
+                                </div>
+
+                                <div class="product-var p-t-30">
+                                    <div class="product-quantity product-var__item d-flex align-items-center flex-wrap">
+                                        <span class="product-var__text">Miktar: </span>
+                                        <form class="modal-quantity-scale m-l-20">
+                                            <div class="value-button" id="modal-decrease" onclick="decreaseValueModal()">-</div>
+                                            <input type="number" id="modal-number" value="1" />
+                                            <div class="value-button" id="modal-increase" onclick="increaseValueModal()">+</div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Modal Quickview cart -->
