@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using eCommercial.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Extensions.Configuration;
 
 namespace eCommercial.DataAccess.Concrete.EntityFramework
 {
     public class CommercialContext:DbContext
-    {  
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        public CommercialContext(DbContextOptions<CommercialContext> options) : base(options)
         {
-             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; Database=eCommerceDb;Integrated Security=true;");
-        
+
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -22,24 +22,25 @@ namespace eCommercial.DataAccess.Concrete.EntityFramework
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Image> Images { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductCategory>().HasKey(c => new { c.CategoryId, c.ProductId });
             modelBuilder.Entity<Product>().HasData(
-                new Product() { ProductId = 1, Name = "Samsung S5", Url = "samsung-s5", Price = 2000, ImageUrl = "1.jpg", Description = "iyi telefon", IsApproved = true },
-                new Product() { ProductId = 2, Name = "Samsung S6", Url = "samsung-s6", Price = 3000, ImageUrl = "2.jpg", Description = "iyi telefon", IsApproved = false },
-                new Product() { ProductId = 3, Name = "Samsung S7", Url = "samsung-s7", Price = 4000, ImageUrl = "3.jpg", Description = "iyi telefon", IsApproved = true },
-                new Product() { ProductId = 4, Name = "Samsung S8", Url = "samsung-s8", Price = 5000, ImageUrl = "4.jpg", Description = "iyi telefon", IsApproved = false },
-                new Product() { ProductId = 5, Name = "Samsung S9", Url = "samsung-s9", Price = 6000, ImageUrl = "5.jpg", Description = "iyi telefon", IsApproved = true }
+                new Product() { Id = 1, Name = "Samsung S5", Url = "samsung-s5", Price = 2000, ImageUrl = "1.jpg", Description = "iyi telefon", IsApproved = true },
+                new Product() { Id = 2, Name = "Samsung S6", Url = "samsung-s6", Price = 3000, ImageUrl = "2.jpg", Description = "iyi telefon", IsApproved = false },
+                new Product() { Id = 3, Name = "Samsung S7", Url = "samsung-s7", Price = 4000, ImageUrl = "3.jpg", Description = "iyi telefon", IsApproved = true },
+                new Product() { Id = 4, Name = "Samsung S8", Url = "samsung-s8", Price = 5000, ImageUrl = "4.jpg", Description = "iyi telefon", IsApproved = false },
+                new Product() { Id = 5, Name = "Samsung S9", Url = "samsung-s9", Price = 6000, ImageUrl = "5.jpg", Description = "iyi telefon", IsApproved = true }
             );
 
             modelBuilder.Entity<Category>().HasData(
-                new Category() { CategoryId = 1, Name = "Telefon", Url = "telefon" },
-                new Category() { CategoryId = 2, Name = "Bilgisayar", Url = "bilgisayar" },
-                new Category() { CategoryId = 3, Name = "Elektronik", Url = "elektronik" },
-                new Category() { CategoryId = 4, Name = "Beyaz Eşya", Url = "beyaz-esya" }
+                new Category() { Id = 1, Name = "Telefon", Url = "telefon" },
+                new Category() { Id = 2, Name = "Bilgisayar", Url = "bilgisayar" },
+                new Category() { Id = 3, Name = "Elektronik", Url = "elektronik" },
+                new Category() { Id = 4, Name = "Beyaz Eşya", Url = "beyaz-esya" }
             );
 
             modelBuilder.Entity<ProductCategory>().HasData(

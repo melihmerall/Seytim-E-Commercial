@@ -21,7 +21,7 @@ namespace eCommercial.DataAccess.Concrete.EntityFramework
         public Product GetByIdWithCategories(int id)
         {
             return CommercialContext.Products
-                            .Where(i => i.ProductId == id)
+                            .Where(i => i.Id == id)
                             .Include(i => i.ProductCategories)
                             .ThenInclude(i => i.Category)
                             .FirstOrDefault();
@@ -88,7 +88,7 @@ namespace eCommercial.DataAccess.Concrete.EntityFramework
         {
             var product = CommercialContext.Products
                                 .Include(i => i.ProductCategories)
-                                .FirstOrDefault(i => i.ProductId == entity.ProductId);
+                                .FirstOrDefault(i => i.Id == entity.Id);
 
 
             if (product != null)
@@ -103,7 +103,7 @@ namespace eCommercial.DataAccess.Concrete.EntityFramework
 
                 product.ProductCategories = categoryIds.Select(catid => new ProductCategory()
                 {
-                    ProductId = entity.ProductId,
+                    ProductId = entity.Id,
                     CategoryId = catid
                 }).ToList();
 

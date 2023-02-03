@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace eCommercial.Entities.Concrete
 {
-    public class Order
+    public class Order : BaseEntity
     {
-        public int Id { get; set; }
         public string OrderNumber { get; set; }
         public DateTime OrderDate { get; set; }
         public string UserId { get; set; }

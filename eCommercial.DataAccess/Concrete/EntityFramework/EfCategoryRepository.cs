@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eCommercial.DataAccess.Concrete.EntityFramework
 {
-    public class EfCategoryRepository: EfGenericRepository<Category,CommercialContext>, ICategoryRepository
+    public class EfCategoryRepository :EfGenericRepository<Category, CommercialContext>, ICategoryRepository
     {
         public EfCategoryRepository(DbContext context) : base(context)
         {
@@ -21,7 +21,7 @@ namespace eCommercial.DataAccess.Concrete.EntityFramework
         public Category GetByIdWithProducts(int categoryId)
         {
             return CommercialContext.Categories
-                .Where(i => i.CategoryId == categoryId)
+                .Where(i => i.Id == categoryId)
                 .Include(i => i.ProductCategories)
                 .ThenInclude(i => i.Product)
                 .FirstOrDefault();

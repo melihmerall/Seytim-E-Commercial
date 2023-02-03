@@ -1,10 +1,17 @@
 using eCommercial.DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<CommercialContext>();
+
+
+
+var connectionString = builder.Configuration.GetConnectionString("SqlServer");
+builder.Services.AddDbContext<CommercialContext>(options => options.UseSqlServer(connectionString));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

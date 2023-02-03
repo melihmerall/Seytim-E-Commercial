@@ -12,18 +12,17 @@ using eCommercial.DataAccess.Concrete.EntityFramework;
 namespace eCommercial.DataAccess.Migrations
 {
     [DbContext(typeof(CommercialContext))]
-    [Migration("20221110130446_SeedDataAdded-Mig3")]
-    partial class SeedDataAddedMig3
+    [Migration("20230203204851_Initiak")]
+    partial class Initiak
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("eCommercial.Entities.Concrete.Cart", b =>
                 {
@@ -31,10 +30,15 @@ namespace eCommercial.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -48,16 +52,22 @@ namespace eCommercial.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CartId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -70,49 +80,91 @@ namespace eCommercial.DataAccess.Migrations
 
             modelBuilder.Entity("eCommercial.Entities.Concrete.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2499),
                             Name = "Telefon",
+                            Status = false,
                             Url = "telefon"
                         },
                         new
                         {
-                            CategoryId = 2,
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2501),
                             Name = "Bilgisayar",
+                            Status = false,
                             Url = "bilgisayar"
                         },
                         new
                         {
-                            CategoryId = 3,
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2502),
                             Name = "Elektronik",
+                            Status = false,
                             Url = "elektronik"
                         },
                         new
                         {
-                            CategoryId = 4,
+                            Id = 4,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2502),
                             Name = "Beyaz Eşya",
+                            Status = false,
                             Url = "beyaz-esya"
                         });
+                });
+
+            modelBuilder.Entity("eCommercial.Entities.Concrete.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("eCommercial.Entities.Concrete.Order", b =>
@@ -121,59 +173,54 @@ namespace eCommercial.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConversationId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("OrderNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OrderState")
                         .HasColumnType("int");
 
                     b.Property<string>("PaymentId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentType")
                         .HasColumnType("int");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -187,7 +234,10 @@ namespace eCommercial.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -201,6 +251,9 @@ namespace eCommercial.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
@@ -212,21 +265,22 @@ namespace eCommercial.DataAccess.Migrations
 
             modelBuilder.Entity("eCommercial.Entities.Concrete.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsApproved")
@@ -236,24 +290,26 @@ namespace eCommercial.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("Price")
                         .HasColumnType("float");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
-                            ProductId = 1,
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2379),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "1.jpg",
@@ -261,11 +317,13 @@ namespace eCommercial.DataAccess.Migrations
                             IsHome = false,
                             Name = "Samsung S5",
                             Price = 2000.0,
+                            Status = false,
                             Url = "samsung-s5"
                         },
                         new
                         {
-                            ProductId = 2,
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2398),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "2.jpg",
@@ -273,11 +331,13 @@ namespace eCommercial.DataAccess.Migrations
                             IsHome = false,
                             Name = "Samsung S6",
                             Price = 3000.0,
+                            Status = false,
                             Url = "samsung-s6"
                         },
                         new
                         {
-                            ProductId = 3,
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2400),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "3.jpg",
@@ -285,11 +345,13 @@ namespace eCommercial.DataAccess.Migrations
                             IsHome = false,
                             Name = "Samsung S7",
                             Price = 4000.0,
+                            Status = false,
                             Url = "samsung-s7"
                         },
                         new
                         {
-                            ProductId = 4,
+                            Id = 4,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2400),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "4.jpg",
@@ -297,11 +359,13 @@ namespace eCommercial.DataAccess.Migrations
                             IsHome = false,
                             Name = "Samsung S8",
                             Price = 5000.0,
+                            Status = false,
                             Url = "samsung-s8"
                         },
                         new
                         {
-                            ProductId = 5,
+                            Id = 5,
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2401),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "5.jpg",
@@ -309,6 +373,7 @@ namespace eCommercial.DataAccess.Migrations
                             IsHome = false,
                             Name = "Samsung S9",
                             Price = 6000.0,
+                            Status = false,
                             Url = "samsung-s9"
                         });
                 });
@@ -399,6 +464,15 @@ namespace eCommercial.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("eCommercial.Entities.Concrete.Image", b =>
+                {
+                    b.HasOne("eCommercial.Entities.Concrete.Product", "Products")
+                        .WithMany()
+                        .HasForeignKey("ProductsId");
+
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("eCommercial.Entities.Concrete.OrderItem", b =>
                 {
                     b.HasOne("eCommercial.Entities.Concrete.Order", "Order")
@@ -421,13 +495,13 @@ namespace eCommercial.DataAccess.Migrations
             modelBuilder.Entity("eCommercial.Entities.Concrete.ProductCategory", b =>
                 {
                     b.HasOne("eCommercial.Entities.Concrete.Category", "Category")
-                        .WithMany()
+                        .WithMany("ProductCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommercial.Entities.Concrete.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductCategories")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -442,9 +516,19 @@ namespace eCommercial.DataAccess.Migrations
                     b.Navigation("CartItems");
                 });
 
+            modelBuilder.Entity("eCommercial.Entities.Concrete.Category", b =>
+                {
+                    b.Navigation("ProductCategories");
+                });
+
             modelBuilder.Entity("eCommercial.Entities.Concrete.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("eCommercial.Entities.Concrete.Product", b =>
+                {
+                    b.Navigation("ProductCategories");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eCommercial.DataAccess.Concrete.EntityFramework
 {
-    public class EfCartRepository: EfGenericRepository<Cart,CommercialContext>, ICartRepository
+    public  class EfCartRepository: EfGenericRepository<Cart,CommercialContext>, ICartRepository
+
     {
         public EfCartRepository(DbContext context) : base(context)
         {

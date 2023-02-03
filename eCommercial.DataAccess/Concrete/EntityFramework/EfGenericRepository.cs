@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eCommercial.DataAccess.Concrete.EntityFramework
 {
-    public class EfGenericRepository<TEntity,TContext>:IRepository<TEntity>
+    public abstract class EfGenericRepository<TEntity,TContext>:IRepository<TEntity>
     where TEntity : class, new()
-    where TContext : class, new()
+   
     {
         protected readonly DbContext _context;
         public EfGenericRepository(DbContext context)

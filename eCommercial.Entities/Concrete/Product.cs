@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace eCommercial.Entities.Concrete
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public int ProductId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
         public double? Price { get; set; }
@@ -22,6 +21,6 @@ namespace eCommercial.Entities.Concrete
    
         public List<ProductCategory> ProductCategories { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        //public ICollection<Category> Categories { get; set; }
     }
 }
