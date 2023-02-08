@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Giriş Sayfası</h1>
+    <p class="mb-4">
+        Güncel Siparişleri bu tabloda görebilirisiniz.
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Sipariş Listesi</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Sipariş No</th>
+                            <th>Sipariş Tarihi</th>
+                            <th>İsim Soyisim</th>
+                            <th>Şehir</th>
+                            <th>Sipariş Durumu</th>
+                            <th>Ödenen Tutar</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Sipariş No</th>
+                            <th>Sipariş Tarihi</th>
+                            <th>İsim Soyisim</th>
+                            <th>Şehir</th>
+                            <th>Sipariş Durumu</th>
+                            <th>Ödenen Tutar</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Deneme No</td>
+                            <td>Deneme Tarih</td>
+                            <td>Deneme İsim</td>
+                            <td>Deneme Şehir</td>
+                            <td>Deneme Durum</td>
+                            <td>Deneme Tutar</td>
+                        </tr>
+                       
+                     
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

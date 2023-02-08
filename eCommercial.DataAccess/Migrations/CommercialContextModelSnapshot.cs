@@ -87,6 +87,12 @@ namespace eCommercial.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -104,7 +110,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2499),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 141, DateTimeKind.Local).AddTicks(134),
                             Name = "Telefon",
                             Status = false,
                             Url = "telefon"
@@ -112,7 +118,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2501),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 141, DateTimeKind.Local).AddTicks(135),
                             Name = "Bilgisayar",
                             Status = false,
                             Url = "bilgisayar"
@@ -120,7 +126,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2502),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 141, DateTimeKind.Local).AddTicks(183),
                             Name = "Elektronik",
                             Status = false,
                             Url = "elektronik"
@@ -128,7 +134,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2502),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 141, DateTimeKind.Local).AddTicks(184),
                             Name = "Beyaz Eşya",
                             Status = false,
                             Url = "beyaz-esya"
@@ -307,7 +313,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2379),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 140, DateTimeKind.Local).AddTicks(9936),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "1.jpg",
@@ -321,7 +327,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2398),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 140, DateTimeKind.Local).AddTicks(9961),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "2.jpg",
@@ -335,7 +341,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2400),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 140, DateTimeKind.Local).AddTicks(9962),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "3.jpg",
@@ -349,7 +355,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2400),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 140, DateTimeKind.Local).AddTicks(9963),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "4.jpg",
@@ -363,7 +369,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2023, 2, 3, 23, 48, 51, 16, DateTimeKind.Local).AddTicks(2401),
+                            CreatedAt = new DateTime(2023, 2, 7, 18, 14, 29, 140, DateTimeKind.Local).AddTicks(9964),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "5.jpg",
