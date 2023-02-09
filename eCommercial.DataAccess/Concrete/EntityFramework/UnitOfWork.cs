@@ -19,6 +19,7 @@ namespace eCommercial.DataAccess.Concrete.EntityFramework
         private EfCategoryRepository _categoryRepository;
         private EfOrderRepository _orderRepository;
         private EfProductRepository _productRepository;
+        private EfAdminRepository _adminRepository;
 
         public ICartRepository Carts =>
             _cartRepository = _cartRepository ?? new EfCartRepository(_context);
@@ -31,6 +32,8 @@ namespace eCommercial.DataAccess.Concrete.EntityFramework
 
         public IProductRepository Products =>
             _productRepository = _productRepository ?? new EfProductRepository(_context);
+
+        public IAdminRepository Admins => _adminRepository = _adminRepository ?? new EfAdminRepository(_context);
 
         public void Dispose()
         {

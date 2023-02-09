@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommercial.DataAccess.Concrete.EntityFramework;
 
@@ -11,9 +12,10 @@ using eCommercial.DataAccess.Concrete.EntityFramework;
 namespace eCommercial.DataAccess.Migrations
 {
     [DbContext(typeof(CommercialContext))]
-    partial class CommercialContextModelSnapshot : ModelSnapshot
+    [Migration("20230209002441_AddAdmin")]
+    partial class AddAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

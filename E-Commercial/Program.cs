@@ -1,8 +1,9 @@
-using E_Commercial.Extension.SmtpMail;
+﻿using E_Commercial.Extension.SmtpMail;
 using eCommercial.Business.Abstract;
 using eCommercial.Business.Concrete;
 using eCommercial.DataAccess.Abstract;
 using eCommercial.DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +23,26 @@ builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICartService, CartManager>();
 builder.Services.AddScoped<IOrderService, OrderManager>();
+builder.Services.AddScoped<IAdminService, AdminManager>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+
+    options.LoginPath = "/Login";
+    options.LogoutPath = "/Logout";
+    options.AccessDeniedPath = "/accessdenied"; // eriþim engelleme
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.Cookie = new CookieBuilder
+    {
+        HttpOnly = true,
+        Name = ".Seytim.eTicaret.Cookie",
+        SameSite = SameSiteMode.Strict
+
+    };
+});
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +57,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

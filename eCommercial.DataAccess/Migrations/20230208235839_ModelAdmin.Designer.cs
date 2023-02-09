@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommercial.DataAccess.Concrete.EntityFramework;
 
@@ -11,9 +12,10 @@ using eCommercial.DataAccess.Concrete.EntityFramework;
 namespace eCommercial.DataAccess.Migrations
 {
     [DbContext(typeof(CommercialContext))]
-    partial class CommercialContextModelSnapshot : ModelSnapshot
+    [Migration("20230208235839_ModelAdmin")]
+    partial class ModelAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,34 +23,6 @@ namespace eCommercial.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("eCommercial.Entities.Concrete.Admin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AdminEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AdminName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AdminPassword")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Admins");
-                });
 
             modelBuilder.Entity("eCommercial.Entities.Concrete.Cart", b =>
                 {
@@ -138,7 +112,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 568, DateTimeKind.Local).AddTicks(9977),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5939),
                             Name = "Telefon",
                             Status = false,
                             Url = "telefon"
@@ -146,7 +120,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 569, DateTimeKind.Local).AddTicks(84),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5941),
                             Name = "Bilgisayar",
                             Status = false,
                             Url = "bilgisayar"
@@ -154,7 +128,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 569, DateTimeKind.Local).AddTicks(87),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5942),
                             Name = "Elektronik",
                             Status = false,
                             Url = "elektronik"
@@ -162,7 +136,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 569, DateTimeKind.Local).AddTicks(88),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5943),
                             Name = "Beyaz Eşya",
                             Status = false,
                             Url = "beyaz-esya"
@@ -341,7 +315,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 568, DateTimeKind.Local).AddTicks(9770),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5737),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "1.jpg",
@@ -355,7 +329,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 568, DateTimeKind.Local).AddTicks(9806),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5759),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "2.jpg",
@@ -369,7 +343,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 568, DateTimeKind.Local).AddTicks(9807),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5761),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "3.jpg",
@@ -383,7 +357,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 568, DateTimeKind.Local).AddTicks(9808),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5762),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "4.jpg",
@@ -397,7 +371,7 @@ namespace eCommercial.DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2023, 2, 9, 3, 24, 40, 568, DateTimeKind.Local).AddTicks(9810),
+                            CreatedAt = new DateTime(2023, 2, 9, 2, 58, 39, 84, DateTimeKind.Local).AddTicks(5763),
                             DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "iyi telefon",
                             ImageUrl = "5.jpg",

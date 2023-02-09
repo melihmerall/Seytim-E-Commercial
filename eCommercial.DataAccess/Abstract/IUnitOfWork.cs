@@ -12,6 +12,7 @@ namespace eCommercial.DataAccess.Abstract
         ICategoryRepository Categories { get; }
         IOrderRepository Orders { get; }
         IProductRepository Products { get; }
+        IAdminRepository Admins { get; }
         void Save();
     }
 }

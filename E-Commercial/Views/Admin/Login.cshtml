@@ -1,4 +1,5 @@
 ﻿
+@model AdminLoginViewModel
 @{
     Layout = null;
 }
@@ -47,20 +48,20 @@
                                     </div>
                                     <h2 class="h5 text-gray-900 mb-4">Giriş bilgileri ile sisteme giriş yapabilirsin.</h2>
                                     <br><br>
-                                    <form class="user">
+                                    <form asp-controller="Admin" asp-action="Login" method="post" class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input asp-for="AdminMail" type="email" class="form-control form-control-user"
                                                    id="exampleInputEmail" aria-describedby="emailHelp"
                                                    placeholder="Mail Adresini girin...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input asp-for="AdminPassword" type="password" class="form-control form-control-user"
                                                    id="exampleInputPassword" placeholder="Şifrenizi girin...">
                                         </div>
                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Giriş Yap
-                                        </a>
+                                        </button>
                                         <hr>
                                       
                                     </form>
